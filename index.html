@@ -11,6 +11,14 @@
       <p>Speed:</p>
       <p id="speedDisplay"></p>
     </div>
+    <div style="display: grid; grid-template-columns: 100px 1fr;">
+      <p>Lat:</p>
+      <p id="latDisplay"></p>
+    </div>
+    <div style="display: grid; grid-template-columns: 100px 1fr;">
+      <p>Lng:</p>
+      <p id="lngDisplay"></p>
+    </div>
 
     <script>
       var canvas = document.getElementById("canvas");
@@ -25,13 +33,28 @@
       let speed;
       let speedDisplay = document.querySelector("#speedDisplay");
 
+      let lat;
+      let latDisplay = document.querySelector("#latDisplay");
+
+      let lng;
+      let lngDisplay = document.querySelector("#lngDisplay");
+
       navigator.geolocation.watchPosition(data => {
+        console.log("data", data);
         direction = data.coords.heading
           ? data.coords.heading
           : "No Direction Recorded";
         speed = data.coords.speed ? data.coords.speed : "No Speed Recorded";
+        lng = data.coords.latitutde
+          ? data.coords.longitude
+          : "No Longitude Detected";
+        lat = data.coords.longitutde
+          ? data.coords.latitude
+          : "No Latitude Detected";
         directionDisplay.innerHTML = direction;
         speedDisplay.innerHTML = speed;
+        latDisplay.innerHTML = lat;
+        lngDisplay.innerHTML = lng;
       });
 
       function drawSpeedometer() {
