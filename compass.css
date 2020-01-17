@@ -1,0 +1,26 @@
+.main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.value {
+}
+
+.value-container {
+  display: flex;
+}
+
+.value-label {
+  width: 100px;
+}
+
+.value-displays {
+  width: 400px;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  padding: 1em;
+  box-sizing: border-box;
+}

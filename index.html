@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="compass.css" />
+  </head>
   <body>
-    <canvas id="canvas" width="400" height="400" style="background-color:#333">
-    </canvas>
-    <div style="display: grid; grid-template-columns: 100px 1fr;">
-      <p>Heading:</p>
-      <p id="directionDisplay"></p>
-    </div>
-    <div style="display: grid; grid-template-columns: 100px 1fr;">
-      <p>Speed:</p>
-      <p id="speedDisplay"></p>
-    </div>
-    <div style="display: grid; grid-template-columns: 100px 1fr;">
-      <p>Lat:</p>
-      <p id="latDisplay"></p>
-    </div>
-    <div style="display: grid; grid-template-columns: 100px 1fr;">
-      <p>Lng:</p>
-      <p id="lngDisplay"></p>
+    <div class="main-div">
+      <canvas
+        id="canvas"
+        width="400"
+        height="400"
+        style="background-color:#333"
+      >
+      </canvas>
+
+      <div class="value-displays">
+        <div class="value-container" style="">
+          <p class="value-label">Heading:</p>
+          <p class="value" id="directionDisplay"></p>
+        </div>
+        <div class="value-container">
+          <p class="value-label">Speed:</p>
+          <p class="value" id="speedDisplay"></p>
+        </div>
+        <div class="value-container">
+          <p class="value-label">Lat:</p>
+          <p class="value" id="latDisplay"></p>
+        </div>
+        <div class="value-container">
+          <p class="value-label">Lng:</p>
+          <p class="value" id="lngDisplay"></p>
+        </div>
+      </div>
     </div>
 
     <script>
