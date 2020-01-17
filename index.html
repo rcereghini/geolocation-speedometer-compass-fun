@@ -40,30 +40,32 @@
       ctx.translate(radius, radius);
       radius = radius * 0.9;
       setInterval(drawSpeedometer, 1000);
+
       let direction;
-      let directionDisplay = document.querySelector("#directionDisplay");
-
-      let speed;
-      let speedDisplay = document.querySelector("#speedDisplay");
-
-      let lat;
-      let latDisplay = document.querySelector("#latDisplay");
-
-      let lng;
-      let lngDisplay = document.querySelector("#lngDisplay");
-
       navigator.geolocation.watchPosition(data => {
+        let directionDisplay = document.querySelector("#directionDisplay");
+
+        let speed;
+        let speedDisplay = document.querySelector("#speedDisplay");
+
+        let lat;
+        let latDisplay = document.querySelector("#latDisplay");
+
+        let lng;
+        let lngDisplay = document.querySelector("#lngDisplay");
         console.log("data", data);
         direction = data.coords.heading
           ? data.coords.heading
           : "No Direction Recorded";
         speed = data.coords.speed ? data.coords.speed : "No Speed Recorded";
-        lng = data.coords.latitutde
+        lng = data.coords.latitude
           ? data.coords.longitude
           : "No Longitude Detected";
-        lat = data.coords.longitutde
+        lat = data.coords.latitude
           ? data.coords.latitude
           : "No Latitude Detected";
+
+        console.log(lat, lng, speed, direction);
         directionDisplay.innerHTML = direction;
         speedDisplay.innerHTML = speed;
         latDisplay.innerHTML = lat;
