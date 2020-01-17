@@ -60,8 +60,10 @@
         console.log("data ==>", data);
         direction = data.coords.heading
           ? data.coords.heading
-          : "No Direction Recorded";
-        speed = data.coords.speed ? data.coords.speed : "No Speed Recorded";
+          : "Movement Required";
+        speed = data.coords.speed
+          ? data.coords.speed / 1.609 + " mph"
+          : "0 mph";
         lng = data.coords.latitude
           ? data.coords.longitude
           : "No Longitude Detected";
