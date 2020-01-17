@@ -30,10 +30,19 @@
           <p class="value-label">Lng:</p>
           <p class="value" id="lngDisplay"></p>
         </div>
+        <div class="value-container">
+          <p class="value-label">Update(s):</p>
+          <p class="value" id="updateNum"></p>
+        </div>
       </div>
     </div>
 
     <script>
+      let direction,
+        lng,
+        speed,
+        lat,
+        updateNum = 0;
       var canvas = document.getElementById("canvas");
       var ctx = canvas.getContext("2d");
       var radius = canvas.height / 2;
@@ -41,19 +50,14 @@
       radius = radius * 0.9;
       setInterval(drawSpeedometer, 1000);
 
-      let direction;
+      let directionDisplay = document.querySelector("#directionDisplay");
+      let speedDisplay = document.querySelector("#speedDisplay");
+      let latDisplay = document.querySelector("#latDisplay");
+      let lngDisplay = document.querySelector("#lngDisplay");
+      let updateNumDisplay = document.querySelector("#updateNum");
+
       navigator.geolocation.watchPosition(data => {
-        let directionDisplay = document.querySelector("#directionDisplay");
-
-        let speed;
-        let speedDisplay = document.querySelector("#speedDisplay");
-
-        let lat;
-        let latDisplay = document.querySelector("#latDisplay");
-
-        let lng;
-        let lngDisplay = document.querySelector("#lngDisplay");
-        console.log("data", data);
+        console.log("data ==>", data);
         direction = data.coords.heading
           ? data.coords.heading
           : "No Direction Recorded";
@@ -64,12 +68,13 @@
         lat = data.coords.latitude
           ? data.coords.latitude
           : "No Latitude Detected";
+        updateNum++;
 
-        console.log(lat, lng, speed, direction);
         directionDisplay.innerHTML = direction;
         speedDisplay.innerHTML = speed;
         latDisplay.innerHTML = lat;
         lngDisplay.innerHTML = lng;
+        updateNumDisplay.innerHTML = updateNum;
       });
 
       function drawSpeedometer() {
